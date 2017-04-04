@@ -34,7 +34,7 @@ public class UserControllerIT {
         userParam.put("firstName", "test");
         userParam.put("lastName", "user");
         userParam.put("password", "test12334");
-        userParam.put("email", "test.user@alexthered.me");
+        userParam.put("email", "test.user123345@alexthered.me");
     }
 
     @Test
@@ -100,6 +100,8 @@ public class UserControllerIT {
     @Test
     public void testCreateValidUser() throws Exception{
 
+        userParam.put("email", "valid.email@test.com");
+
         given().contentType(ContentType.JSON).body(userParam)
                 .when().post(USER_ENDPOINT).then()
                 .log().ifError()
@@ -107,12 +109,32 @@ public class UserControllerIT {
                 .body("firstName", equalTo("test"))
                 .body("lastName", equalTo("user"))
                 .body("password", equalTo("test12334"))
-                .body("email", equalTo("test.user@alexthered.me"));
+                .body("email", equalTo("valid.email@test.com"));
+    }
+
+    @Test
+    public void testCreateUserWithDuplicatedEmail() throws Exception{
+
+        //first time, it should be fine
+        given().contentType(ContentType.JSON).body(userParam)
+                .when().post(USER_ENDPOINT).then()
+                .log().ifError()
+                .assertThat().statusCode(equalTo(HttpStatus.CREATED.value()));
+
+        //second time, it should return BAD_REQUEST code
+        given().contentType(ContentType.JSON).body(userParam)
+                .when().post(USER_ENDPOINT).then()
+                .log().ifError()
+                .assertThat().statusCode(equalTo(HttpStatus.CONFLICT.value()));
+
     }
 
     @Test
     public void getAllUsers() throws Exception {
-
+        given().contentType(ContentType.JSON)
+                .when().get(USER_ENDPOINT)
+                .then().log().ifError()
+                .assertThat().statusCode(equalTo(HttpStatus.OK.value()));
     }
 
 }

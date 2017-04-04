@@ -17,3 +17,5 @@
 
 * See UserControllerIT
 
+## Jpa repositories and how to override
+
