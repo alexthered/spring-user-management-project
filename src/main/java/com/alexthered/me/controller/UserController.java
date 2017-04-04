@@ -1,5 +1,6 @@
 package com.alexthered.me.controller;
 
+import com.alexthered.me.boundary.UserPostForm;
 import com.alexthered.me.domain.User;
 import com.alexthered.me.repository.UserRepository;
 import com.alexthered.me.service.UserService;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -20,7 +22,8 @@ public class UserController {
     private UserService userService;// our nice repository implementation
 
     @RequestMapping(path = "/users", method = RequestMethod.POST)
-    public User saveUser(@RequestBody User user) {
+    public User saveUser(@Valid @RequestBody UserPostForm userPostForm) {
+        User user = userPostForm.buildUser();
         userService.saveUser(user); // using it to persist
         return user;
     }

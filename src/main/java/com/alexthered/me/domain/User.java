@@ -12,6 +12,7 @@ import javax.persistence.*;
  */
 @Data
 @Entity
+@Builder
 public class User {
 
     @Id
@@ -23,6 +24,9 @@ public class User {
 
     @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
+    private String email;
 
     @Column(nullable = false)
     private String password;

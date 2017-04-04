@@ -9,5 +9,8 @@
 * Facebook authentication integration
 
 
+### Opened problems:
+* Better API response for error when entity does not satisfy javax.constraint requirement
+
 
 
