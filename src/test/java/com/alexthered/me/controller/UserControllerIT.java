@@ -40,7 +40,7 @@ public class UserControllerIT {
 
         given().contentType(ContentType.JSON).body(param)
                 .when().post(USER_ENDPOINT).then()
-                .log().ifError()
+                .log().all()
                 .assertThat().statusCode(equalTo(HttpStatus.OK.value()));
     }
 
