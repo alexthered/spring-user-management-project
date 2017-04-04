@@ -1,6 +1,6 @@
-package com.alexthered.me.utils.controller;
+package com.alexthered.me.utils.errors;
 
-import com.alexthered.me.utils.boundary.DuplicationException;
+import com.alexthered.me.utils.errors.DuplicationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
