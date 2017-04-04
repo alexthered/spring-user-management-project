@@ -107,7 +107,7 @@ public class UserControllerIT {
                 .body("firstName", equalTo("test"))
                 .body("lastName", equalTo("user"))
                 .body("password", equalTo("test12334"))
-                .body("email", equalTo("test.user@alexthered."));
+                .body("email", equalTo("test.user@alexthered.me"));
     }
 
 }
