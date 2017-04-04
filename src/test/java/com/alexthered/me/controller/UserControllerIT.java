@@ -103,11 +103,16 @@ public class UserControllerIT {
         given().contentType(ContentType.JSON).body(userParam)
                 .when().post(USER_ENDPOINT).then()
                 .log().ifError()
-                .assertThat().statusCode(equalTo(HttpStatus.OK.value()))
+                .assertThat().statusCode(equalTo(HttpStatus.CREATED.value()))
                 .body("firstName", equalTo("test"))
                 .body("lastName", equalTo("user"))
                 .body("password", equalTo("test12334"))
                 .body("email", equalTo("test.user@alexthered.me"));
+    }
+
+    @Test
+    public void getAllUsers() throws Exception {
+
     }
 
 }
