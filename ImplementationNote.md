@@ -19,3 +19,5 @@
 
 ## Jpa repositories and how to override
 
+## Configure file-based H2 database
+
