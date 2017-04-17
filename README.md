@@ -5,7 +5,6 @@
 * Restful API for user to create/update/delete/get his own user account
 * Persistence H2 database to store user's information
 * User authentication and access token generation
-* Google authentication
 
 ### Opened problems:
 * Better API response for error when entity does not satisfy javax.constraint requirement
